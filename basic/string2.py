@@ -50,7 +50,24 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  result = a + ' ' + b
+  aLen = len(a)
+  aLenExtra = aLen % 2
+  aTotal = aLen + aLenExtra
+  aLenHalf = round(aTotal/2)
+  # aCut = aLenHalf + aLenExtra
+  aFirst = a[:aLenHalf]
+  aBack = a[aLenHalf:]
+
+  bLen = len(b)
+  bLenExtra = bLen % 2
+  bTotal = bLen + bLenExtra
+  bLenHalf = round(bTotal/2)
+  # bCut = bLenHalf + bLenExtra
+  bFirst = b[:bLenHalf]
+  bBack = b[bLenHalf:]
+
+  result = aFirst + bFirst + aBack + bBack
+  #result = a + ' ' + b
   return result
 
 
