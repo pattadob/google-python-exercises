@@ -67,7 +67,7 @@ def fix_start(s):
   result = ''
   if len(s) > 0:
     firstString = s[0:1]
-    result = firstString + s[1:].replace(s[0:1], '*')
+    result = firstString + s[1:].replace(firstString, '*')
   return result
 
 
