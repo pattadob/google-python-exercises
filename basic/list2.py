@@ -14,7 +14,13 @@
 # modify the passed in list.
 def remove_adjacent(nums):
   # +++your code here+++
-  return remove_adjacent_new_list(nums)
+  return remove_adjacent_modify_list(nums)
+
+def remove_adjacent_modify_list(nums):
+  for n in nums:
+    if nums.count(n) > 1:
+      nums.remove(n)
+  return nums
 
 def remove_adjacent_new_list(nums):
   list_new = []
