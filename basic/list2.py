@@ -35,7 +35,9 @@ def remove_adjacent_new_list(nums):
 # pass of both lists.
 def linear_merge(list1, list2):
   # +++your code here+++
-  return
+  list1.extend(list2)
+  list1.sort()
+  return list1
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
 # is not constant time with the standard python list implementation, so

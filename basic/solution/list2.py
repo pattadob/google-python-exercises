@@ -35,11 +35,15 @@ def linear_merge(list1, list2):
   result = []
   # Look at the two lists so long as both are non-empty.
   # Take whichever element [0] is smaller.
+  print('list1-' + str(list1))
+  print('list2-' + str(list2))
   while len(list1) and len(list2):
     if list1[0] < list2[0]:
       result.append(list1.pop(0))
     else:
       result.append(list2.pop(0))
+    print('list1-' + str(list1))
+    print('list2-' + str(list2))
 
   # Now tack on what's left
   result.extend(list1)
@@ -65,18 +69,18 @@ def test(got, expected):
     prefix = ' OK '
   else:
     prefix = '  X '
-  print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
+  print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
 def main():
-  print 'remove_adjacent'
+  print('remove_adjacent')
   test(remove_adjacent([1, 2, 2, 3]), [1, 2, 3])
   test(remove_adjacent([2, 2, 3, 3, 3]), [2, 3])
   test(remove_adjacent([]), [])
 
   print
-  print 'linear_merge'
+  print('linear_merge')
   test(linear_merge(['aa', 'xx', 'zz'], ['bb', 'cc']),
        ['aa', 'bb', 'cc', 'xx', 'zz'])
   test(linear_merge(['aa', 'xx'], ['bb', 'cc', 'zz']),
