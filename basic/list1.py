@@ -56,7 +56,8 @@ def front_x(words):
   list_x.extend(list_sort)
   return list_x
 
-
+def last(a):
+  return a[-1]
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -66,7 +67,8 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
   # +++your code here+++
-  return sorted(tuples, key=lambda list:list[len(list)-1])
+  #return sorted(tuples, key=lambda list:list[len(list)-1])
+  return sorted(tuples, key=last)
 
 
 # Simple provided test() function used in main() to print
