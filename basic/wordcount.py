@@ -51,11 +51,12 @@ def print_words(filename :str):
   for line in f:
     # print(line.split())
     for word in line.split():
-      if word in dict:
-        current = dict[word]
-        dict[word] = current + 1
+      keyWord = word.lower()
+      if keyWord in dict:
+        current = dict[keyWord]
+        dict[keyWord] = current + 1
       else:
-        dict[word] = 1
+        dict[keyWord] = 1
   f.close()
   for key in sorted(dict.keys(), key=str.lower):
     print(key, dict[key])
