@@ -46,6 +46,23 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 def print_words(filename :str):
   print('words count ' + filename)
+  dict = count_words(filename)
+  for key in sorted(dict.keys(), key=str.lower):
+    print(key, dict[key])
+
+def print_top(filename :str):
+  print('words top ' + filename)
+  dict = count_words(filename)
+  # print(sorted(dict.items(), key=lambda x: x[1]))
+  i = 1
+  top = 20
+  for key, values in sorted(dict.items(), key=lambda x: x[1], reverse = True):
+    print(i, key, values)
+    i += 1
+    if i > top:
+      break
+
+def count_words(filename :str):
   dict = {}
   f = open(filename, 'r')
   for line in f:
@@ -58,8 +75,7 @@ def print_words(filename :str):
       else:
         dict[keyWord] = 1
   f.close()
-  for key in sorted(dict.keys(), key=str.lower):
-    print(key, dict[key])
+  return dict
 ###
 
 # This basic command line argument parsing code is provided and
@@ -74,8 +90,7 @@ def main():
   if option == '--count':
     print_words(filename)
   elif option == '--topcount':
-    print('print_top()')
-    # print_top(filename)
+    print_top(filename)
   else:
     print('unknown option: ' + option)
     sys.exit(1)
