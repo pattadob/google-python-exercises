@@ -47,8 +47,11 @@ import sys
 def print_words(filename :str):
   print('words count ' + filename)
   dict = count_words(filename)
-  for key in sorted(dict.keys(), key=str.lower):
+  for key in sorted(dict.keys()):
     print(key, dict[key])
+
+def get_count(word_count_tuple):
+  return word_count_tuple[1]
 
 def print_top(filename :str):
   print('words top ' + filename)
@@ -56,7 +59,7 @@ def print_top(filename :str):
   # print(sorted(dict.items(), key=lambda x: x[1]))
   i = 1
   top = 20
-  for key, values in sorted(dict.items(), key=lambda x: x[1], reverse = True):
+  for key, values in sorted(dict.items(), key=get_count, reverse = True):
     print(i, key, values)
     i += 1
     if i > top:
@@ -70,8 +73,7 @@ def count_words(filename :str):
     for word in line.split():
       keyWord = word.lower()
       if keyWord in dict:
-        current = dict[keyWord]
-        dict[keyWord] = current + 1
+        dict[keyWord] = dict[keyWord] + 1
       else:
         dict[keyWord] = 1
   f.close()
