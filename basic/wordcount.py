@@ -57,13 +57,16 @@ def print_top(filename :str):
   print('words top ' + filename)
   dict = count_words(filename)
   # print(sorted(dict.items(), key=lambda x: x[1]))
-  i = 1
-  top = 20
-  for key, values in sorted(dict.items(), key=get_count, reverse = True):
-    print(i, key, values)
-    i += 1
-    if i > top:
-      break
+  # i = 1
+  # top = 20
+  # for key, values in sorted(dict.items(), key=get_count, reverse = True):
+  #   print(i, key, values)
+  #   i += 1
+  #   if i > top:
+  #     break
+  items = sorted(dict.items(), key=get_count, reverse = True)
+  for item in items[:20]:
+    print(item[0], item[1])
 
 def count_words(filename :str):
   dict = {}
