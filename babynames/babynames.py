@@ -41,20 +41,18 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  years = []
-  names = []
-  year = ''
+  document = []
 
   f = open(filename, 'r')
   for line in f:
     year = get_year(line)
     if year != '':
-      years.append(year)
+      document.append(year)
     baby = get_baby(line)
     if baby != '':
-      years.append(baby)
+      document.append(baby)
   f.close()
-  print(years)
+  print(document)
   return
 
 def get_year(string :str):
