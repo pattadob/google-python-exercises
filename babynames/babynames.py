@@ -41,8 +41,35 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
+  years = []
+  names = []
+  year = ''
+
+  f = open(filename, 'r')
+  for line in f:
+    year = get_year(line)
+    if year != '':
+      years.append(year)
+    baby = get_baby(line)
+    if baby != '':
+      years.append(baby)
+  f.close()
+  print(years)
   return
 
+def get_year(string :str):
+  result = ''
+  match = re.search(r'(Popularity in )(\w\w\w\w)(<)', string)
+  if match:
+    result = match.group(2)
+  return result
+
+def get_baby(string :str):
+  result = ''
+  match = re.search(r'(<td>)([0-9]+)(</td><td>)(\w+)(</td><td>)', string)
+  if match:
+    result = match.group(4) + ' ' + match.group(2)
+  return result
 
 def main():
   # This command-line parsing code is provided.
@@ -51,7 +78,7 @@ def main():
   args = sys.argv[1:]
 
   if not args:
-    print 'usage: [--summaryfile] file [file ...]'
+    print('usage: [--summaryfile] file [file ...]')
     sys.exit(1)
 
   # Notice the summary flag and remove it from args if it is present.
@@ -63,6 +90,7 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  
+  extract_names(args[0])
+
 if __name__ == '__main__':
   main()
