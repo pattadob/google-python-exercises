@@ -88,7 +88,8 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  extract_names(args[0])
+  for file in args:
+    extract_names(file)
 
 if __name__ == '__main__':
   main()
