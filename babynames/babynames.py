@@ -52,8 +52,7 @@ def extract_names(filename):
     if baby != '':
       document.append(baby)
   f.close()
-  print(document)
-  return
+  return sorted(document)
 
 def get_year(string :str):
   result = ''
@@ -89,7 +88,9 @@ def main():
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
   for file in args:
-    extract_names(file)
+    names = extract_names(file)
+  text = '\n'.join(names)
+  print(text)
 
 if __name__ == '__main__':
   main()
